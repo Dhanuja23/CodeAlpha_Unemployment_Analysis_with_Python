@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("unemployment_data.csv")
+
+# Display first 5 rows
+print(df.head())
+
+# Convert 'Date' column to datetime format 
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Plot Unemployment Trends Over Time
+plt.figure(figsize=(10, 5))
+sns.lineplot(x='Date', y='Unemployment Rate', data=df, marker='o', color='b')
+plt.title('Unemployment Rate Over Time')
+plt.xlabel('Date')
+plt.ylabel('Unemployment Rate (%)')
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.show()
